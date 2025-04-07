@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{title}} - Study Group Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <!-- Add Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  {{#if user}}
+    <div class="container">
+      <div class="sidebar">
+        <img src="/images/LearnFlow Logo Dark.png" alt="Logo" class="logo">
+        <a href="/home"><i class="fas fa-home"></i> Home</a>
+        <a href="/feed"><i class="fas fa-rss"></i> Feed</a>
+        <a href="/friends"><i class="fas fa-users"></i> Friends</a>
+        <a href="/groups"><i class="fas fa-users-cog"></i> Groups</a>
+        <a href="/profile"><i class="fas fa-user"></i> Profile</a>
+        <a href="/messages"><i class="fas fa-envelope"></i> Messages</a>
+        <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout ({{user.username}})</a>
+      </div>
+      <div class="main-content">
+        {{{body}}}
+      </div>
+    </div>
+  {{else}}
+    {{{body}}}
+  {{/if}}
+</body>
+</html>

@@ -1,0 +1,9 @@
+<h2>Feed</h2>
+<div class="feed-grid">
+  {{#each posts}}
+    <a href="/post/{{id}}" class="post-card">
+      <p>{{content}}</p>
+      <div class="username"><span class="comment-text">By {{username}}</span></div>
+    </a>
+  {{/each}}
+</div>

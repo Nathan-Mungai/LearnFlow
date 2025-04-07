@@ -1,0 +1,17 @@
+<h2>Post by {{post.username}}</h2>
+<div class="card">
+  <div class="post">
+    <p>{{post.content}}</p>
+    <div class="username"><span class="poster-text">By {{post.username}}</span></div>
+  </div>
+  <h3>Comments</h3>
+  <form method="POST" action="/posts/{{post.id}}/comments">
+    <input name="comment" placeholder="Add a comment" required>
+    <button type="submit">Comment</button>
+  </form>
+  <ul>
+    {{#each comments}}
+      <li><img src="{{commenterPicture}}" class="profile-pic" alt="{{commenter}}">{{content}} <span class="comment-text">By {{commenter}}</span></li>
+    {{/each}}
+  </ul>
+</div>

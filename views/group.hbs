@@ -1,0 +1,56 @@
+<h2>{{group.name}}</h2>
+<div class="card">
+  <h3>Group Details</h3>
+  <form method="POST" action="/group/{{group.id}}/update">
+    <input name="name" value="{{group.name}}" placeholder="Group name" required>
+    <textarea name="description" placeholder="Group description">{{group.description}}</textarea>
+    <div>
+    <button type="submit" class="group-btns">Update Group</button>
+  </form>
+  <form method="POST" action="/group/{{group.id}}/delete" onsubmit="return confirm('Are you sure you want to delete this group?');">
+    <button type="submit" class="delete-button group-btns">Delete Group</button>
+  </form>
+</div>
+
+<div class="card">
+  <h3>Add Member</h3>
+  <form method="POST" action="/group/{{group.id}}/search-users">
+    <input name="searchUsername" placeholder="Search for users to add" required>
+    <button type="submit" class="search-btn">Search</button>
+  </form>
+  <h4>Search Results</h4>
+  {{#each searchResults}}
+    <div class="member-item">
+      <img src="{{profilePicture}}" class="profile-pic" alt="{{username}}">{{username}} (ID: {{id}})
+      <form method="POST" action="/group/{{../group.id}}/add-member/{{id}}" style="display:inline;">
+        <button type="submit" class="add-button">Add</button>
+      </form>
+    </div>
+  {{/each}}
+  <h4>Members</h4>
+  <div class="members-list">
+    {{#each members}}
+      <div class="member-item">
+        <img src="{{profilePicture}}" class="profile-pic" alt="{{username}}">{{username}} (ID: {{id}})
+        {{#unless (eq id ../user.id)}}
+          <form method="POST" action="/group/{{../group.id}}/remove-member/{{id}}" style="display:inline;" onsubmit="return confirm('Are you sure you want to remove {{username}} from the group?');">
+            <button type="submit" class="remove-button">Remove</button>
+          </form>
+        {{/unless}}
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+<div class="card">
+  <h3>Messages</h3>
+  <div class="conversation">
+    {{#each messages}}
+      <p>{{fromUsername}}: {{content}}</p>
+    {{/each}}
+  </div>
+  <form method="POST" action="/group/{{group.id}}/messages">
+    <input name="content" placeholder="Type your message" required>
+    <button type="submit">Send</button>
+  </form>
+</div>

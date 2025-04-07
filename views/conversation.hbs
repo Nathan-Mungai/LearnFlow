@@ -1,0 +1,16 @@
+<h2>{{title}}</h2>
+<div class="card">
+  <div class="conversation">
+    {{#each messages}}
+      <div class="message {{#if (eq fromUsername ../user.username)}}sent{{else}}received{{/if}}">
+        <div class="message-content">
+          <img src="{{fromPicture}}" class="profile-pic" alt="{{fromUsername}}">{{fromUsername}}: {{content}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <form method="POST" action="/messages/{{recipient.id}}">
+    <input name="content" placeholder="Type your message" required>
+    <button type="submit">Send</button>
+  </form>
+</div>

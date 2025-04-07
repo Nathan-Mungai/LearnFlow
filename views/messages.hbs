@@ -1,0 +1,9 @@
+<h2>Messages</h2>
+<div class="card">
+  <h3>Your Conversations</h3>
+  {{#each contacts}}
+    <div>
+      <img src="{{profilePicture}}" class="profile-pic" alt="{{username}}"><a href="/messages/{{id}}" class="friends-link">{{username}} (ID: {{id}})</a>
+    </div>
+  {{/each}}
+</div>

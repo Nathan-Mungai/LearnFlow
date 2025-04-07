@@ -1,0 +1,16 @@
+<h2>Profile</h2>
+<div class="card">
+  <div class="profile-info">
+    <img src="{{user.profilePicture}}" class="profile-pic-large" alt="Profile Picture">
+    <div>
+      <h3>{{user.username}}</h3>
+      <p>ID: {{user.id}}</p>
+    </div>
+  </div>
+  <form method="POST">
+    <input name="username" placeholder="New username" value="{{user.username}}">
+    <textarea name="bio" placeholder="Bio">{{user.bio}}</textarea>
+    <input name="profilePicture" placeholder="Profile picture URL" value="{{user.profilePicture}}">
+    <button type="submit">Update Profile</button>
+  </form>
+</div>
